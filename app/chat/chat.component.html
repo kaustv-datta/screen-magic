@@ -1,0 +1,26 @@
+<div class="col-md-8" id="chat-container">
+
+  	<div class="panel panel-info" id="chats-panel">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Messages <span *ngIf="topic">- {{topic.name}}</span></h3>
+	  </div>
+	  <div class="panel-body" id="chat-panel-body">
+	  	<ul *ngIf="topic" class="list-group" id="chat-list-container">
+		  <li *ngFor="#msg of messages" href="#" class="list-group-item">
+		    <img class="img-circle" src="{{msg.avatar}}" /> {{msg.user}}: {{msg.message}}
+		  </li>
+		</ul>
+	  </div>
+	  <div class="panel-footer">
+		<div class="input-group">
+	      <input #sendMsg type="text" class="form-control" placeholder="Enter Message">
+	      <span class="input-group-btn">
+	        <button (click)="sendMessage(sendMsg)" type="button" class="btn btn-info">
+			  <span class="glyphicon glyphicon-send" aria-hidden="true"></span> Send
+			</button>
+	      </span>
+	    </div>
+	  </div>
+	</div>
+
+  </div>

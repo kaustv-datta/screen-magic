@@ -1,0 +1,28 @@
+<div class="col-md-4" id="topics-container">
+
+  	<div class="panel panel-danger" id="topics-panel">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Topics</h3>
+	  </div>
+	  <div class="panel-body" id="topics-body">
+	  	<ul class="list-group" id="chat-list-container">
+		  <li *ngFor="#topic of topics" (click)="activateTopic(topic)" class="list-group-item" 
+		  	[class.list-group-item-danger]="topic.active === true">
+		    {{topic.name}}
+		    <span (click)="toggleSubscription(topic)" class="glyphicon subscribe-icon" [class.glyphicon-star]="topic.subscribed === true" [class.glyphicon-star-empty]="topic.subscribed === false" aria-hidden="true"></span>
+		  </li>
+		</ul>
+	  </div>
+	  <div class="panel-footer" id="topics-footer">
+	  	<div class="input-group">
+	      <input #test type="text" class="form-control" placeholder="New Topic">
+	      <span class="input-group-btn">
+	        <button type="button" class="btn btn-danger" (click)="addTopic(test)">
+			  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add
+			</button>
+	      </span>
+	    </div>
+	  </div>
+	</div>
+
+</div>
