@@ -57,6 +57,7 @@ export class ChatComponent implements OnInit {
 		var message = inputDom.value;
 
 		if (message == '') {
+			alertify.error("Empty Message !");
 			return;
 		} else {
 			if (this.topic && this.topic.key) {

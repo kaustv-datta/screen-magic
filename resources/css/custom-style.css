@@ -62,3 +62,11 @@ html, body {
 	height: 20px;
     width: 20px;
 }
+
+.list-group-item {
+	word-wrap: break-word;
+}
+
+#admin-panel {
+	height: 100%;
+}

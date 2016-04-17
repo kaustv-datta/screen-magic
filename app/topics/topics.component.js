@@ -71,6 +71,7 @@ System.register(['angular2/core', '../topics/topics.service'], function(exports_
                         this._topicsService.changeTopic(topic);
                     }
                     else {
+                        alertify.error('Please subscribe.');
                     }
                 };
                 TopicsComponent.prototype.deactivateAllTopics = function () {

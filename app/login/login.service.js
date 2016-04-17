@@ -27,6 +27,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                     this._router = _router;
                     this.firebaseUrl = "https://radiant-inferno-7607.firebaseio.com/";
                     this.firebaseRef = new Firebase(this.firebaseUrl);
+                    this.usersRef = this.firebaseRef.child('users');
                     this.firebaseRef.onAuth(function (user) {
                         if (user) {
                             _this.authData = user;
@@ -42,16 +43,32 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                         }, this.authHandler.bind(this));
                     }
                     catch (e) {
-                        console.log('Login Error: Please try again.');
+                        alertify.error("Login Error: Please try again.");
                     }
                 };
                 LoginService.prototype.authHandler = function (error, authData) {
                     if (error) {
-                        console.log("Login Failed!", error);
+                        alertify.error("Login Error: Please try again.");
                     }
                     else {
-                        var link = ['EmpDashboard', { email: authData.password.email, gravatar: authData.password.profileImageURL }];
-                        this._router.navigate(link);
+                        alertify.success('Please wait while we log you in.');
+                        var username = authData.password.email.split('@')[0];
+                        var onuserdata = this.usersRef.child(username).once('value', function (dataSnapshot) {
+                            var userDetails = dataSnapshot.val();
+                            if (userDetails.admin) {
+                                var link = ['AdminDashboard'];
+                                this._router.navigate(link);
+                            }
+                            else {
+                                if (userDetails.hasAccess) {
+                                    var link = ['EmpDashboard', { email: authData.password.email, gravatar: authData.password.profileImageURL }];
+                                    this._router.navigate(link);
+                                }
+                                else {
+                                    alertify.error("Permission Issue: Contact Admin.");
+                                }
+                            }
+                        }, function (err) { console.log(err); }, this);
                     }
                 };
                 LoginService = __decorate([

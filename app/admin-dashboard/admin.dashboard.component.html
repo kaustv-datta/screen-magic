@@ -1,0 +1,28 @@
+<div class="row" id="admin-panel">
+	<div class="col-md-2"></div>
+	
+	<div class="col-md-8" id="admin-users-panel">
+		<div class="panel panel-default">
+		  <div class="panel-heading">User Access</div>
+
+		  <div class="panel-body">
+		    <ul class="list-group">
+			  <li *ngFor="#user of users" class="list-group-item">
+			    <div class="checkbox checkbox-slider--b-flat">
+					<label>
+						<input #permissionBox type="checkbox" [(ngModel)]="user.hasAccess" (change)="changeAccess(user, permissionBox.checked)"><span>{{user.name}}</span>
+					</label>
+				</div>
+			  </li>
+			</ul>
+		  </div>
+
+		  <div class="panel-footer">
+		  	<a href="#" (click)="goBack()" class="btn btn-default">Back</a>
+		  </div>
+
+		</div>
+	</div>
+	
+	<div class="col-md-2"></div>
+</div>

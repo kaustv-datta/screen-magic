@@ -78,7 +78,7 @@ export class TopicsComponent implements OnInit {
 			this.selectedTopic = topic;
 			this._topicsService.changeTopic(topic);
 		} else {
-			//alertify.error('Please subscribe.');
+			alertify.error('Please subscribe.');
 		}
 	}
 

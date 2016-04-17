@@ -52,6 +52,7 @@ System.register(['angular2/core', '../topics/topics.service'], function(exports_
                 ChatComponent.prototype.sendMessage = function (inputDom) {
                     var message = inputDom.value;
                     if (message == '') {
+                        alertify.error("Empty Message !");
                         return;
                     }
                     else {

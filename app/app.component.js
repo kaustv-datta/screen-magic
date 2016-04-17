@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './login/login.component', './login/login.service', './emp-dashboard/emp.dashboard.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './login/login.component', './login/login.service', './emp-dashboard/emp.dashboard.component', './admin-dashboard/admin.dashboard.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './login/login.component', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, login_component_1, login_service_1, emp_dashboard_component_1;
+    var core_1, router_1, login_component_1, login_service_1, emp_dashboard_component_1, admin_dashboard_component_1;
     var AppComponent;
     return {
         setters:[
@@ -28,6 +28,9 @@ System.register(['angular2/core', 'angular2/router', './login/login.component', 
             },
             function (emp_dashboard_component_1_1) {
                 emp_dashboard_component_1 = emp_dashboard_component_1_1;
+            },
+            function (admin_dashboard_component_1_1) {
+                admin_dashboard_component_1 = admin_dashboard_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -38,7 +41,7 @@ System.register(['angular2/core', 'angular2/router', './login/login.component', 
                     core_1.Component({
                         selector: 'my-app',
                         templateUrl: 'app/app.component.html',
-                        directives: [router_1.ROUTER_DIRECTIVES, login_component_1.LoginComponent, emp_dashboard_component_1.EmpDashboardComponent],
+                        directives: [router_1.ROUTER_DIRECTIVES, login_component_1.LoginComponent, emp_dashboard_component_1.EmpDashboardComponent, admin_dashboard_component_1.AdminDashboardComponent],
                         providers: [router_1.ROUTER_PROVIDERS, login_service_1.LoginService]
                     }),
                     router_1.RouteConfig([
@@ -52,6 +55,11 @@ System.register(['angular2/core', 'angular2/router', './login/login.component', 
                             path: '/emp-dashboard/:email',
                             name: 'EmpDashboard',
                             component: emp_dashboard_component_1.EmpDashboardComponent
+                        },
+                        {
+                            path: '/admin-dashboard',
+                            name: 'AdminDashboard',
+                            component: admin_dashboard_component_1.AdminDashboardComponent
                         }
                     ]), 
                     __metadata('design:paramtypes', [])
